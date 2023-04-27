@@ -70,10 +70,14 @@ class Gridgenerating():
             max_y = max(point3.y, point4.y)
 
             square_bbox = (min_x, min_y, max_x, max_y)
-            bbox_df = gpd.GeoDataFrame(geometry=[self.create_bbox_poly(square_bbox)]) #=> can be used to visualize location of bbox inside city
+            self.bbox_df = gpd.GeoDataFrame(geometry=[self.create_bbox_poly(square_bbox)]) #=> can be used to visualize location of bbox inside city
             
-            bbox_df.crs = self.city_df.crs
+            self.bbox_df.crs = self.city_df.crs
             #create building dataframe storing buildings inside bbox
             buildings_within = gpd.sjoin(self.city_df, self.bbox_df, predicate="intersects") 
-            return buildings_within, bbox_df
+            return buildings_within, self.bbox_df
 
+
+if __name__  == "__main__":
+    Grid = Gridgenerating(city_df=None)
+    b, bbox = Grid.capture_square_bbox(1)
