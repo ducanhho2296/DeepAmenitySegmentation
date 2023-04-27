@@ -76,5 +76,4 @@ class Gridgenerating():
             #create building dataframe storing buildings inside bbox
             buildings_within = gpd.sjoin(self.city_df, self.bbox_df, predicate="intersects") 
             return buildings_within, bbox_df
-        else:
-            return None
+
