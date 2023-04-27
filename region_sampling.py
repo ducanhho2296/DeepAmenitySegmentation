@@ -18,7 +18,7 @@ class Gridgenerating():
         self.grid_points = []
         for x in x_coords:
             for y in y_coords:
-                self.points.append(Point(x, y))
+                self.grid_points.append(Point(x, y))
                 
         return self.grid_points
 
