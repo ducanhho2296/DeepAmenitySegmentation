@@ -1,5 +1,5 @@
 import numpy as np
-import rasterio
+import rasterio.features
 from rasterio.crs import CRS
 from rasterio.transform import from_bounds
 
