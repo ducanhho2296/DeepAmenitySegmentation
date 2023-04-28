@@ -15,7 +15,7 @@ This project uses a custom semantic segmentation model based on EfficientNet and
 - Configuration files for easy management of hyperparameters and settings
 
 ## Requirements
-- Python 3.6 or later
+- Python 3.9 or later
 - PyTorch
 - torchvision
 - geopandas
