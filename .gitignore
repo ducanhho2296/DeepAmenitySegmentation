@@ -5,4 +5,3 @@ raw_datasets/
 datasets/
 __pycache__/
 osmnx_analyzing.ipynb
-osmnx_analyzing.ipynb
