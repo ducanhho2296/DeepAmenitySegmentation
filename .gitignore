@@ -3,3 +3,4 @@ venv/
 cache/
 rawdatasets/
 datasets/
+__pycache__/
