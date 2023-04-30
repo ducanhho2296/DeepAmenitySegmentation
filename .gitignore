@@ -1,6 +1,8 @@
 venv/
 *.pyc
 cache/
-raw_datasets/
-datasets/
+raw_datasets/raw_images/*
+raw_datasets/raw_labels/*
+datasets/images/*
+datasets/labels/*
 __pycache__/
