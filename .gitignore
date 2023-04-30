@@ -5,4 +5,8 @@ raw_datasets/raw_images/*
 raw_datasets/raw_labels/*
 datasets/images/*
 datasets/labels/*
+!raw_datasets/raw_images/.gitkeep
+!raw_datasets/raw_labels/.gitkeep
+!datasets/images/.gitkeep
+!datasets/labels/.gitkeep
 __pycache__/
