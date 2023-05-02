@@ -161,10 +161,6 @@ class CityData:
                 print("Building geodataframes extracted successfully.")
                 print("Number of buildings: {}".format(buildings.shape[0]))
                 print("Bounding box of the city: {}".format(self.city_bbox))
-                for i in range(1,4):
-                     time.sleep(1)
-                     print(i)
-
         return self.buildings, self.city_bbox
 
 
