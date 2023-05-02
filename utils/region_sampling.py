@@ -76,7 +76,7 @@ class Gridgenerating():
             #create building dataframe storing buildings inside bbox
             buildings_within = gpd.sjoin(self.city_df, self.bbox_df, predicate="intersects") 
             print("----------------------------------------------------------")
-            print("square region of city was extracted successfully as builings_within and has shape of:{}")
+            print("square region of city was extracted successfully as builings_within with shape of:{}".format(buildings_within.shape))
             return buildings_within, self.bbox_df
 
 

@@ -49,6 +49,7 @@ buildings, city_bbox = city_data.get_data()
 grid_generating = Gridgenerating(buildings, spacing_x=spacing_x, spacing_y=spacing_y)
 grid_points = grid_generating.grid_points_in_bbox(bbox=city_bbox)
 
+import time
 
 img_size = 512
 count = 0
@@ -56,7 +57,12 @@ for i in range(0, len(grid_points)-1):
     buildings_within_bbox = None
     bbox_visual = None
     img = None
-    buildings_within_bbox, bbox_visual = grid_generating.capture_square_bbox(point_position=i,grid_points=grid_points)  
+    buildings_within_bbox, bbox_visual = grid_generating.capture_square_bbox(point_position=i,grid_points=grid_points) 
+    print("plotting figures of square region in ...") 
+    for i in range(1,4):
+        time.sleep(1)
+        print("{} second...".format(i))
+        
     #capture only bboxs which have buildings inside
     if len(buildings_within_bbox) !=0 : 
         count += 1
@@ -76,4 +82,5 @@ for i in range(0, len(grid_points)-1):
         #process padding label
         pad_tif_to_square(label_path.format(i), padded_label_path.format(count), img_size)
         plt.close()
+print("adding padding to bbox and processing images successfully")
 
