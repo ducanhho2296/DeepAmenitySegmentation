@@ -154,6 +154,13 @@ class CityData:
         print(buildings.function.value_counts())
         self.buildings = buildings
         self.city_bbox = buildings.total_bounds
+        if buildings is not None:
+                print("--------------------------------------------------------------")
+                print("Building geodataframes extracted successfully.")
+                print("Number of buildings: {}".format(buildings.shape[0]))
+                print("Bounding box of the city: {}".format(self.city_bbox))
+                print("Building functions extracted and filled in missing values.")
+                print("Number of buildings by function:\n{}".format(buildings.function.value_counts()))
 
         return self.buildings, self.city_bbox
 
@@ -161,5 +168,5 @@ class CityData:
 if __name__ == "__main__":
     city_data = CityData("Berlin, Germany")
     buildings, city_bbox = city_data.get_data()
-    print(buildings)
+    print(buildings.shape)
     print(city_bbox)
