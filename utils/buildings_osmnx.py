@@ -1,5 +1,7 @@
 import osmnx as ox
 import numpy as np
+import time
+
 
 class CityData:
     def __init__(self, city:str):
@@ -161,6 +163,9 @@ class CityData:
                 print("Bounding box of the city: {}".format(self.city_bbox))
                 print("Building functions extracted and filled in missing values.")
                 print("Number of buildings by function:\n{}".format(buildings.function.value_counts()))
+                for i in range(1,4):
+                     time.sleep(1)
+                     print(i)
 
         return self.buildings, self.city_bbox
 
