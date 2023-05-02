@@ -49,8 +49,6 @@ buildings, city_bbox = city_data.get_data()
 grid_generating = Gridgenerating(buildings, spacing_x=spacing_x, spacing_y=spacing_y)
 grid_points = grid_generating.grid_points_in_bbox(bbox=city_bbox)
 
-import time
-
 img_size = 512
 count = 0
 total_iterations = len(grid_points)-1
