@@ -24,8 +24,6 @@ from utils.image_processing import pad_image_to_square, pad_tif_to_square
 
 # Set paths from configuration file
 root_path = config['paths']['root_path']
-raw_img_dir = config['paths']['raw_img_dir']
-raw_label_dir = config['paths']['raw_label_dir']
 padded_img_dir = config['paths']['padded_img_dir']
 padded_label_dir = config['paths']['padded_label_dir']
 
@@ -40,9 +38,6 @@ spacing_y = float(config['grid']['spacing_y'])
 img_size = int(config['processing']['img_size'])
 
 # Define the paths for images and labels
-img_path = os.path.join('..', root_path, raw_img_dir, 'figure{}.jpg')
-label_path = os.path.join('..', root_path, raw_label_dir, 'label{}.tif')
-
 padded_img_path = os.path.join('..', root_path, padded_img_dir, 'image{}.jpg')
 padded_label_path = os.path.join('..', root_path, padded_label_dir, 'label{}.tif')
 
@@ -74,9 +69,7 @@ for i in range(0, total_iterations):
                 #plotting buildings_within_bbox for generating bbox's figures
                 buildings_within_bbox.plot(ax=ax, edgecolor='white', facecolor='white')
                 plt.axis('off')
-                #plt.savefig(img_path.format(i),dpi=100, format="jpg", bbox_inches='tight')
-                # img = cv2.imread(img_path.format(i))
-
+                #save figures in buffer memory
                 img_buffer = BytesIO()
                 plt.savefig(img_buffer, dpi=100, format="jpg", bbox_inches='tight')
                 img_buffer.seek(0)
