@@ -5,6 +5,8 @@ raw_datasets/raw_images/*
 raw_datasets/raw_labels/*
 datasets/images/*
 datasets/labels/*
+models/*
+!models/.gitkeep
 !raw_datasets/raw_images/.gitkeep
 !raw_datasets/raw_labels/.gitkeep
 !datasets/images/.gitkeep
