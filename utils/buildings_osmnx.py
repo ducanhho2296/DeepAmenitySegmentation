@@ -134,6 +134,10 @@ class CityData:
         entertainment_buildings = buildings.sjoin(entertainment, how="left")
         public_buildings = buildings.sjoin(public, how="left")
         retail_buildings = buildings.sjoin(retail, how="left")
+        
+        sport_buildings = buildings.sjoin(sport, how="left")
+        leisure_buildings = buildings.sjoin(leisure, how="left")
+        highway_buildings = buildings.sjoin(highway, how="left")
 
         #---------------------------------------------------------
 
@@ -145,6 +149,9 @@ class CityData:
         public_buildings.reset_index(inplace=True)
         retail_buildings.reset_index(inplace=True)
 
+        sport_buildings.reset_index(inplace=True)
+        leisure_buildings.reset_index(inplace=True)
+        highway_buildings.reset_index(inplace=True)
         #-----------------------------------------------------------
         buildings["function"] = np.nan
         buildings.function.fillna(food_buildings.function,inplace=True)
@@ -153,6 +160,11 @@ class CityData:
         buildings.function.fillna(entertainment_buildings.function,inplace=True)
         buildings.function.fillna(public_buildings.function,inplace=True)
         buildings.function.fillna(retail_buildings.function,inplace=True)
+
+        buildings.function.fillna(sport_buildings.function,inplace=True)
+        buildings.function.fillna(leisure_buildings.function,inplace=True)
+        buildings.function.fillna(highway_buildings.function,inplace=True)
+
         print(buildings.function.value_counts())
         self.buildings = buildings
         self.city_bbox = buildings.total_bounds
