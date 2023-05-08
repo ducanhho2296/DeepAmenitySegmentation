@@ -43,6 +43,7 @@ train_dataset, val_dataset = create_train_val_datasets(image_dir, label_dir, tra
 
 # Create the data loaders
 batch_size = args.batch
+num_classes = 10
 train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True, num_workers=4)
 val_loader = DataLoader(val_dataset, batch_size=batch_size, shuffle=False, num_workers=4)
 
@@ -51,9 +52,9 @@ device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
 
 # Define the model architecture
 if args.model == 'unet':
-    model = get_unet_model(device, in_channels=3, num_classes=8)
+    model = get_unet_model(device, in_channels=3, num_classes=num_classes)
 elif args.model == 'deeplabv3plus':
-    model = get_deeplabv3plus_model(device, in_channels=3, num_classes=8)
+    model = get_deeplabv3plus_model(device, in_channels=3, num_classes=num_classes)
 else:
     raise ValueError('Invalid model type')
 
