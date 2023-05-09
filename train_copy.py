@@ -6,7 +6,6 @@ import torch.nn as nn
 import torch.optim as optim
 from torch.utils.data import DataLoader
 from datasets import create_train_val_datasets, get_transforms
-import segmentation_models_pytorch as smp
 
 parent_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 sys.path.append(parent_dir)
@@ -30,20 +29,20 @@ model_weight_path = config['paths']['model_path']
 padded_img_dir = config['paths']['padded_img_dir']
 padded_label_dir = config['paths']['padded_label_dir']
 city_name = config['city']['name']
+num_classes = int(config['training_params']['num_classes'])
 
 # Construct the full paths to the image and label directories
 image_dir = os.path.join(root_path, padded_img_dir)
 label_dir = os.path.join(root_path, padded_label_dir)
 
 # Set the training-validation split ratio
-train_val_split_ratio = 0.8
+train_val_split_ratio = float(config['training_params']['split_ratio'])
 
 # Create the training and validation datasets
 train_dataset, val_dataset = create_train_val_datasets(image_dir, label_dir, train_val_split_ratio, get_transforms())
 
 # Create the data loaders
 batch_size = args.batch
-num_classes = 10
 train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True, num_workers=4)
 val_loader = DataLoader(val_dataset, batch_size=batch_size, shuffle=False, num_workers=4)
 

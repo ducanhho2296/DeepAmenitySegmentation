@@ -53,6 +53,7 @@ def grid_sampling():
     grid_points = grid_generating.grid_points_in_bbox(bbox=city_bbox)
 
     total_iterations = len(grid_points) - 1
+    num_classes = None
 
     for j in range(total_iterations):
         buildings_within_bbox = None
@@ -85,7 +86,8 @@ def grid_sampling():
             img = np.array(img)  
             
             # Generate label for img
-            label_data, label_profile, num_classes = label_image(buildings_within_bbox, img, j)
+            label_data, label_profile, num = label_image(buildings_within_bbox, img, j)
+            num_classes = num
             tif_buffer = BytesIO()
             
             with rasterio.open(tif_buffer, 'w', **label_profile) as label_dst:
@@ -106,12 +108,15 @@ def grid_sampling():
     print("Generating square bbox images with Grid-sampling technique successfully")
     print("Adding padding to bounding box and processing images successfully")
     print("-----------------------------------------------------------------------------------------------------")
-    input("Press enter to continue create new type of square bbox images with all amenity points inside city...")
+    input("Press enter to continue generating new type of square bbox images with all amenity points inside city")
 
-#overwritting number of classes into config.ini file for training process
-# Load the config file
-config = configparser.ConfigParser()
-config.read('config.ini')
+    #overwritting number of classes into config.ini file for training process
+    # Load the config file
+    config.set('num_classes', 'n', str(num_classes))
+    # Save the updated config file
+    with open('config.ini', 'w') as configfile:
+        config.write(configfile)
+
 
 from shapely.geometry import Point, Polygon, MultiPolygon
 import numpy as np
