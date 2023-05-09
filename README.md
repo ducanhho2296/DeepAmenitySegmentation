@@ -9,22 +9,33 @@ This project uses a custom semantic segmentation model based on EfficientNet and
 - Using Osmnx to extract geo spatial data from open street map into a Geodataframe and using Geopandas to extract geo values of amenities in map
 ![download](https://user-images.githubusercontent.com/92146886/219333765-b746ee07-e997-42bd-b49d-64c31464274a.png)
 
-### EfficientNet-based semantic segmentation model
-- Data preprocessing scripts for converting OSM building polygons into label images
-- Training and validation scripts for model training
-- Configuration files for easy management of hyperparameters and settings
+README.md:
 
-## Requirements
-- Python 3.9 or later
-- PyTorch
-- torchvision
-- geopandas
-- rasterio
-- PIL (Pillow)
+## Train Amenity Classification Model
 
-## Usage
-- Prepare your dataset: Collect satellite images and corresponding GeoJSON files containing building polygons and amenity information.
-- Generate label images: Run the data preprocessing script to convert building polygons and amenity information into label images.
-- Train the model: Modify the configuration file with your desired hyperparameters and settings, and run the training script.
-- Evaluate the model: Run the validation script to evaluate the trained model on a separate dataset.
-- Use the trained model: Apply the trained model on new satellite images to automatically recognize and classify buildings based on their amenity types.
+In train.py, a segmentation model will be trained to classify amenity points in satellite images of a city. The model is trained on padded square images of each region inside city with fixed size and the corresponding masks.
+
+### Installation
+
+To use this script, you should create a new Python environment that is separate from the environment used for creating datasets. The packages required to run this script are listed in the `requirements.txt` file. You can install the packages by running the following command:
+
+```bash
+pip install -r requirements.txt
+```
+
+### Usage
+
+1. Set the configuration parameters in the `config.ini` file, including paths, image processing parameters, and training parameters.
+
+2. Run the following command to train the model:
+
+```bash
+python train.py --model <model_type> --batch <batch_size> --epoch <num_epochs> --gpu <gpu_index>
+```
+
+- `model_type`: The type of the model architecture to use. The two options are `unet` and `deeplabv3plus`.
+- `batch_size`: The batch size used during training. The default is `8`.
+- `num_epochs`: The number of epochs to train for. The default is `50`.
+- `gpu_index`: The index of the GPU to use for training. The default is `0`.
+
+3. After the training is completed, the trained model will be saved in the `model` directory with the name `model_type_cityname_amenity_classification.pth`.

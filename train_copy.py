@@ -16,6 +16,8 @@ parser = argparse.ArgumentParser()
 parser.add_argument('--model', type=str, default='unet', help='Model type (unet or deeplabv3plus)')
 parser.add_argument('--batch', type=int, default=8, help='Batch size')
 parser.add_argument('--epoch', type=int, default=50, help='Number of epochs')
+parser.add_argument('--gpu', type=int, default=0, help='specific gpu for training')
+
 args = parser.parse_args()
 
 # Load the configuration file
@@ -47,7 +49,8 @@ train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True, nu
 val_loader = DataLoader(val_dataset, batch_size=batch_size, shuffle=False, num_workers=4)
 
 # Set the device to use for training
-device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
+gpu = args.gpu
+device = torch.device('cuda:{}'.format(gpu) if torch.cuda.is_available() else 'cpu')
 
 # Define the model architecture
 if args.model == 'unet':
