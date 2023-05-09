@@ -36,4 +36,4 @@ python train.py --model <model_type> --batch <batch_size> --epoch <num_epochs> -
 - `num_epochs`: The number of epochs to train for. The default is `50`.
 - `gpu_index`: The index of the GPU to use for training. The default is `0`.
 
-3. After the training is completed, the trained model will be saved in the `model` directory with the name `model_type_cityname_amenity_classification.pth`.
+3. After the training is completed, the trained model will be saved in the `model` directory with the name `modeltype_"cityname"_amenity_classification.pth`.
