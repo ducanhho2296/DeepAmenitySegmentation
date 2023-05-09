@@ -9,7 +9,7 @@ This project uses a custom semantic segmentation model based on EfficientNet and
 - Using Osmnx to extract geo spatial data from open street map into a Geodataframe and using Geopandas to extract geo values of amenities in map
 ![download](https://user-images.githubusercontent.com/92146886/219333765-b746ee07-e997-42bd-b49d-64c31464274a.png)
 
-## Train Amenity Classification Model
+## Train Amenity Segmentation Model
 
 In train.py, a segmentation model will be trained to classify amenity points in satellite images of a city. The model is trained on padded square images of each region inside city with fixed size and the corresponding masks.
 
