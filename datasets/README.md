@@ -1,4 +1,8 @@
-# Generating square bbox images with Grid-sampling and Random-sampling techniques
+# Generating square bbox images 
+
+In this project, there are two types to sampling dataset:
+- with Grid-sampling 
+- and Random-sampling techniques
 
 This Python script, `generate_dataset.py`, generates square bounding box images from high-resolution satellite imagery using two different techniques: Grid-sampling and Random-sampling. The generated images are labeled using the building footprints of the city.
 
