@@ -85,7 +85,7 @@ def grid_sampling():
             img = np.array(img)  
             
             # Generate label for img
-            label_data, label_profile = label_image(buildings_within_bbox, img, j)
+            label_data, label_profile, num_classes = label_image(buildings_within_bbox, img, j)
             tif_buffer = BytesIO()
             
             with rasterio.open(tif_buffer, 'w', **label_profile) as label_dst:
@@ -107,6 +107,11 @@ def grid_sampling():
     print("Adding padding to bounding box and processing images successfully")
     print("-----------------------------------------------------------------------------------------------------")
     input("Press enter to continue create new type of square bbox images with all amenity points inside city...")
+
+#overwritting number of classes into config.ini file for training process
+# Load the config file
+config = configparser.ConfigParser()
+config.read('config.ini')
 
 from shapely.geometry import Point, Polygon, MultiPolygon
 import numpy as np
@@ -200,7 +205,7 @@ def random_generate():
             img = np.array(img)  
             
             # Generate label for img
-            label_data, label_profile = label_image(buildings_inbbox, img, j)
+            label_data, label_profile, num_classes = label_image(buildings_inbbox, img, j)
             tif_buffer = BytesIO()
             
             with rasterio.open(tif_buffer, 'w', **label_profile) as label_dst:

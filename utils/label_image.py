@@ -37,9 +37,10 @@ def label_image(building_df, image, i=1):
         "sport": 9,
         "highway":10
     }
-    
+    num_classes = len(class_mapping)
     # Rasterize the geodataframe to the label image
     shapes = ((geom, class_mapping[func]) for func, geom in zip(building_df['function'], building_df['geometry']))
     rasterio.features.rasterize(shapes=shapes, out=label_data[0], transform=label_transform)
     
-    return label_data, label_profile
+    return label_data, label_profile, num_classes
+
