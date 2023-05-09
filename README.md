@@ -15,7 +15,7 @@ In train.py, a segmentation model will be trained to classify amenity points in 
 
 ### Installation
 
-To train model, you should create a new Python environment that is separate from the environment used for creating datasets. The packages required to run this script are listed in the `requirements.txt` file. You can install the packages by running the following command:
+To train model with `train.py`, you should create a new Python environment that is separate from the environment used for creating datasets. The packages required to run this script are listed in the `requirements.txt` file. You can install the packages by running the following command:
 
 ```bash
 pip install -r requirements.txt
