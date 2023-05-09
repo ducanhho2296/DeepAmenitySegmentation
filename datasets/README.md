@@ -48,7 +48,7 @@ To run the script, simply execute the following command:
 python generate_dataset.py
 ```
 
-The script will generate square bounding box images using two techniques: Grid-sampling and Random-sampling. The generated images and labels will be saved in the directories specified in the configuration file.
+The script will generate square bounding box images using two techniques: Grid-sampling and Amenity-stratified-sampling. The generated images and labels will be saved in the directories specified in the configuration file.
 
 ## Note
 
