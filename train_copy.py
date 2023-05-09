@@ -109,6 +109,6 @@ for epoch in range(num_epochs):
     print(f"Epoch {epoch + 1}/{num_epochs}, Train Loss: {train_loss:.4f}, Val Loss: {val_loss:.4f}")
 
 # Save the trained model
-model_name = f"{args.model}{city_name}_amenity_classification.pth"
+model_name = f"{args.model}_{city_name}_amenity_classification.pth"
 model_path = os.path.join(root_path, model_weight_path, model_name)
 torch.save(model.state_dict(), model_path)
