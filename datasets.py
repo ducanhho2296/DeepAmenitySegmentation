@@ -53,8 +53,8 @@ def get_transforms():
 
 
 if __name__ == "__main__":
-    image_path = "/home/ducanh/DeepAmenitySegmentation/datasets/images"
-    label_path = "/home/ducanh/DeepAmenitySegmentation/datasets/labels"
+    image_path = "../DeepAmenitySegmentation/datasets/images"
+    label_path = "../DeepAmenitySegmentation/datasets/labels"
     S = SatelliteDataset(image_dir=image_path, mask_dir=label_path, transform=get_transforms())
 
     # Iterate over the dataset and display some information
