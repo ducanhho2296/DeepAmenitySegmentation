@@ -66,4 +66,3 @@ pyzmq==23.2.0
 qudida==0.0.4
 requests==2.30.0
 scikit-image==0.20
-test
