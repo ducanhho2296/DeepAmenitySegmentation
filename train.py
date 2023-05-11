@@ -14,6 +14,8 @@ from models.model.get_model import *
 # Parse command-line arguments
 parser = argparse.ArgumentParser()
 parser.add_argument('--model', type=str, default='unet', help='Model type (unet or deeplabv3plus)')
+parser.add_argument('--weight', type=int, default=None, help='Continue training from the last checkpoint')
+
 parser.add_argument('--batch', type=int, default=8, help='Batch size')
 parser.add_argument('--epoch', type=int, default=50, help='Number of epochs')
 parser.add_argument('--gpu', type=int, default=0, help='specific gpu for training')
@@ -53,6 +55,9 @@ val_loader = DataLoader(val_dataset, batch_size=batch_size, shuffle=False, num_w
 gpu = args.gpu
 device = torch.device('cuda:{}'.format(gpu) if torch.cuda.is_available() else 'cpu')
 
+# Set the number of epochs to train for
+num_epochs = args.epoch
+
 # Define the model architecture
 if args.model == 'unet':
     model = get_unet_model(device, in_channels=3, num_classes=num_classes)
@@ -65,11 +70,29 @@ else:
 criterion = nn.CrossEntropyLoss()
 optimizer = optim.Adam(model.parameters(), lr=1e-4)
 
-# Set the number of epochs to train for
-num_epochs = args.epoch
+# Load the specified weight file if provided
+last_epoch = 0
+if args.weight == None:
+    weight_num = 1
+else: weight_num = args.weight
+
+model_name = f"{args.model}_weight_{weight_num}_segmentation.pth"
+model_path = os.path.join(root_path, model_weight_path, model_name)
+
+if args.weight:
+    if os.path.exists(model_path):
+        checkpoint = torch.load(model_path)
+        model.load_state_dict(checkpoint['model_state_dict'])
+        optimizer.load_state_dict(checkpoint['optimizer_state_dict'])
+        last_epoch = checkpoint['epoch']
+    else:
+        print(f"Weight file not found at: {model_path}")
+        sys.exit("Please provide a valid weight file or train the model first.")
+
+
 
 # Train the model
-for epoch in range(num_epochs):
+for epoch in range(last_epoch, num_epochs):
     model.train()
     train_loss = 0
 
@@ -110,6 +133,14 @@ for epoch in range(num_epochs):
     print(f"Epoch {epoch + 1}/{num_epochs}, Train Loss: {train_loss:.4f}, Val Loss: {val_loss:.4f}")
 
 # Save the trained model
-model_name = f"{args.model}_{city_name}_amenity_classification.pth"
-model_path = os.path.join(root_path, model_weight_path, model_name)
-torch.save(model.state_dict(), model_path)
+checkpoint = {
+    'epoch': num_epochs,
+    'model_state_dict': model.state_dict(),
+    'optimizer_state_dict': optimizer.state_dict(),
+}
+torch.save(checkpoint, model_path)
+
+file_path = os.path.join(root_path, model_weight_path, "last_epochs.txt")
+
+with open(file_path, 'w') as file:
+    file.write(str("weight number:{} has the last epoch is {}".format(weight_num, num_epochs)))
