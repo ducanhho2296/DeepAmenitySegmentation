@@ -35,7 +35,7 @@ nest-asyncio==1.5.6
 networkx==3.1
 numpy==1.23.5
 nvidia-cublas-cu11==11.10.3.66
-nvidia-cuda-cupti-cu11==11.7.101
+nvidia-cuda-cupti-cu1111.7.101
 nvidia-cuda-nvrtc-cu11==11.7.99
 nvidia-cuda-runtime-cu11==11.7.99
 nvidia-cudnn-cu11==8.5.0.96
@@ -47,12 +47,12 @@ nvidia-nccl-cu11==2.14.3
 nvidia-nvtx-cu11==11.7.91
 opencv-python-headless==4.7.0.72
 packaging==23.0
-parso==0.8.3
+parso== 0.8.3
 pexpect==4.8.0
 pickleshare==0.7.5
 Pillow==9.4.0
 pip==23.0.1
-platformdirs==2.5.2
+platformdirs==  2.5.2
 pretrainedmodels==0.7.4
 prompt-toolkit==3.0.36
 psutil==5.9.0
@@ -62,7 +62,28 @@ Pygments==2.11.2
 python-dateutil==2.8.2
 PyWavelets==1.4.1
 PyYAML==6.0
-pyzmq==23.2.0
+pyzmq== 23.2.0
 qudida==0.0.4
 requests==2.30.0
-scikit-image==0.20
+scikit-image==0.20.0
+scikit-learn==1.2.2
+scipy==1.9.1
+segmentation-models-pytorch==0.3.2
+setuptools==66.0.0
+six==1.16.0
+stack-data==0.2.0
+sympy==1.11.1
+threadpoolctl==3.1.0
+tifffile==2023.4.12
+timm==0.6.12
+torch==2.0.0
+torchvision==0.7.0
+tornado==6.2
+tqdm==4.65.0
+traitlets==5.7.1
+triton==2.0.0
+typing_extensions==4.5.0
+urllib3==2.0.2
+wcwidth==0.2.5
+wheel==0.38.4
+zipp==3.11.0
