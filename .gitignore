@@ -2,6 +2,7 @@ venv/
 *.pyc
 cache/
 __pycache__/
+mlruns/
 
 datasets/images/*
 datasets/labels/*
