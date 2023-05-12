@@ -17,7 +17,6 @@ parser.add_argument('--model', type=str, default='unet', help='Model type (unet 
 parser.add_argument('--weight', type=int, default=None, help='Continue training from the last checkpoint')
 
 parser.add_argument('--batch', type=int, default=8, help='Batch size')
-parser.add_argument('--epoch', type=int, default=50, help='Number of epochs')
 parser.add_argument('--gpu', type=int, default=0, help='specific gpu for training')
 
 args = parser.parse_args()
@@ -54,6 +53,7 @@ else: weight_num = args.weight
 # Load the trained model
 model_name = f"{args.model}_weight_{weight_num}_segmentation.pth"
 model_path = os.path.join(root_path, model_weight_path, model_name)
+checkpoint = torch.load(model_path)
 
 if args.model == 'unet':
     model = get_unet_model(device, in_channels=3, num_classes=num_classes)
@@ -62,7 +62,7 @@ elif args.model == 'deeplabv3plus':
 else:
     raise ValueError('Invalid model type')
 
-model.load_state_dict(torch.load(model_path))
+model.load_state_dict({k.replace('module.', ''): v for k, v in checkpoint['model_state_dict'].items() if k.replace('module.', '') in model.state_dict()})
 model.eval()
 
 # Create the test dataset
@@ -95,9 +95,9 @@ with torch.no_grad():
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
 # Calculate the evaluation metrics
 accuracy = accuracy_score(y_true, y_pred)
-precision = precision_score(y_true, y_pred, average='weighted')
-recall = recall_score(y_true, y_pred, average='weighted')
-f1 = f1_score(y_true, y_pred, average='weighted')
+precision = precision_score(y_true, y_pred, average='weighted',zero_division=1)
+recall = recall_score(y_true, y_pred, average='weighted',zero_division=1)
+f1 = f1_score(y_true, y_pred, average='weighted',zero_division=1)
 
 print(f"Accuracy: {accuracy:.4f}")
 print(f"Precision: {precision:.4f}")
