@@ -28,7 +28,7 @@ This Python script, `generate_dataset.py`, generates square bounding box images 
 | ![image908](https://github.com/ducanhho2296/DeepAmenitySegmentation/assets/92146886/d09c9bfc-1d6c-464e-9343-7e0c47d6d835) | ![image52](https://github.com/ducanhho2296/DeepAmenitySegmentation/assets/92146886/1d4cad48-dd3b-48cd-b2ff-0e17f9b62f19) |
 
 
-- Note: The bounding box created by Grid Sampling is smaller than that of Amenity Sampling, resulting in the buildings within the Grid Sampling bounding box also being of smaller size.
+- Note: The bounding box created by Grid Sampling has different size in comparison with that of Amenity Sampling, resulting in the buildings within the Grid Sampling bounding box also being of different size.
 
 
 ## Prerequisites
