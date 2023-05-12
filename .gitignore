@@ -5,8 +5,14 @@ __pycache__/
 
 datasets/images/*
 datasets/labels/*
+
+datasets/tests/images/*
+datasets/tests/labels/*
+
 !datasets/images/.gitkeep
 !datasets/labels/.gitkeep
+!datasets/tests/images/.gitkeep
+!datasets/tests/labels/.gitkeep
 
 models/best_weights/*
 !models/best_weights/.gitkeep

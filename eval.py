@@ -1,43 +1,59 @@
 import os
-import sys 
-import torch
-import numpy as np
-from torch.utils.data import DataLoader
-from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
-from datasets import SatelliteDataset, get_transforms
-import segmentation_models_pytorch as smp
-import configparser
+import sys
 import argparse
+import torch
+import torch.nn as nn
+import torch.optim as optim
+from torch.utils.data import DataLoader
+from datasets import get_transforms, SatelliteDataset
 
 parent_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 sys.path.append(parent_dir)
 
+from models.model.get_model import *
+# Parse command-line arguments
 parser = argparse.ArgumentParser()
 parser.add_argument('--model', type=str, default='unet', help='Model type (unet or deeplabv3plus)')
+parser.add_argument('--weight', type=int, default=None, help='Continue training from the last checkpoint')
+
+parser.add_argument('--batch', type=int, default=8, help='Batch size')
+parser.add_argument('--epoch', type=int, default=50, help='Number of epochs')
 parser.add_argument('--gpu', type=int, default=0, help='specific gpu for training')
 
 args = parser.parse_args()
 
-from models.model.get_model import *
-
 # Load the configuration file
+import configparser
 config = configparser.ConfigParser()
 config.read('config.ini')
 
+
 # Get the paths and other parameters from the configuration file
+root_path = os.path.abspath(os.path.join(parent_dir, config.get('paths', 'root_path')))
 model_weight_path = config['paths']['model_path']
-test_img_dir = os.path.abspath(os.path.join(parent_dir, config.get('paths', 'test_img_dir')))
-test_label_dir = os.path.abspath(os.path.join(parent_dir, config.get('paths', 'test_label_dir')))
+test_image_dir = config['paths']['image_test']
+test_label_dir = config['paths']['label_test']
+
 city_name = config['city']['name']
 num_classes = int(config['training_params']['num_classes'])
+
+# Construct the full paths to the image and label directories
+image_dir = os.path.join(root_path, test_image_dir)
+label_dir = os.path.join(root_path, test_label_dir)
 
 # Set the device to use for training
 gpu = args.gpu
 device = torch.device('cuda:{}'.format(gpu) if torch.cuda.is_available() else 'cpu')
 
+
+# Load the specified weight file if provided
+if args.weight == None:
+    weight_num = 1
+else: weight_num = args.weight
+
 # Load the trained model
-model_name = f"{args.model}_{city_name}_amenity_classification.pth"
-model_path = os.path.join(model_weight_path, model_name)
+model_name = f"{args.model}_weight_{weight_num}_segmentation.pth"
+model_path = os.path.join(root_path, model_weight_path, model_name)
 
 if args.model == 'unet':
     model = get_unet_model(device, in_channels=3, num_classes=num_classes)
@@ -50,8 +66,9 @@ model.load_state_dict(torch.load(model_path))
 model.eval()
 
 # Create the test dataset
-test_dataset = SatelliteDataset(test_img_dir, test_label_dir, get_transforms())
-test_loader = DataLoader(test_dataset, batch_size=1, shuffle=False, num_workers=4)
+batch_size = args.batch
+test_dataset = SatelliteDataset(image_dir, label_dir, get_transforms())
+test_loader = DataLoader(test_dataset, batch_size=batch_size, shuffle=False, num_workers=4)
 
 # Initialize lists for ground truth labels and predictions
 y_true = []
@@ -75,6 +92,7 @@ with torch.no_grad():
         y_true.extend(masks)
         y_pred.extend(preds)
 
+from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
 # Calculate the evaluation metrics
 accuracy = accuracy_score(y_true, y_pred)
 precision = precision_score(y_true, y_pred, average='weighted')

@@ -24,8 +24,14 @@ from utils.image_processing import pad_image_to_square, pad_tif_to_square
 
 # Set paths from configuration file
 root_path = config['paths']['root_path']
+
+#training dataset
 padded_img_dir = config['paths']['padded_img_dir']
 padded_label_dir = config['paths']['padded_label_dir']
+
+#testset
+test_image_dir = config['paths']['image_test']
+test_label_dir = config['paths']['label_test']
 
 # Set city information from configuration file
 city_name = config['city']['name']
@@ -36,9 +42,13 @@ spacing_y = float(config['grid']['spacing_y'])
 # Set image processing parameters from configuration file
 img_size = int(config['processing']['img_size'])
 
-# Define the paths for images and labels
+# Define the paths for images and labels 
 padded_img_path = os.path.join('..', root_path, padded_img_dir, 'image{}.jpg')
 padded_label_path = os.path.join('..', root_path, padded_label_dir, 'label{}.tif')
+
+#test_path
+test_image_path = os.path.join(root_path, test_image_dir)
+test_label_path = os.path.join(root_path, test_label_dir)
 
 city_data = CityData(city_name)
 buildings, city_bbox = city_data.get_data()
@@ -223,12 +233,15 @@ def random_generate():
             
             # Process padding label
             pad_tif_to_square(tif_buffer, padded_label_path.format(count), img_size)
+
             plt.close()
             
             img_buffer.close()
             tif_buffer.close()
     
     print("Adding padding to bounding box and processing images successfully")
+
+    input("press Enter to create test sets ")
 
 
 
