@@ -1,10 +1,35 @@
 # Generating square bbox images 
 
 In this project, there are two types to sampling dataset:
-- with Grid-sampling 
-- and Random-sampling techniques
+1. Grid Sampling
+2. Amenity Stratified Sampling
 
-This Python script, `generate_dataset.py`, generates square bounding box images from high-resolution satellite imagery using two different techniques: Grid-sampling and Random-sampling. The generated images are labeled using `rasterio` package to create label image of building footprints, each pixel of label image represents a class of amenity inside city.
+#### Grid Sampling
+The grid sampling method involves dividing the square region into a grid and sampling buildings from specific grid points. The steps involved in grid sampling are as follows:
+
+- Divide the square region into a grid by selecting a specific grid size (spacing_x, spacing_y in `config.ini`).
+- For each grid point, find another 3 adjacent grid points, with 4 grid points as 4 corners of a bounding box, create this bounding box using the `Polygon()` function from the `Shapely` library.
+- Retrieve and plot all buildings within the bounding box using OSMnx.
+- Save the plotted figure of the bounding box, representing the buildings, as a dataset image.
+
+#### Amenity Stratified Sampling
+The amenity stratified sampling method involves selecting buildings based on a specific amenity point within the square region. The steps involved in amenity stratified sampling are as follows:
+
+- Choose an amenity point within city.
+- Generate a bounding box around the amenity point using the `bbox_from_point()` function from the `OSMnx` library.
+- Retrieve and plot all buildings within the bounding box using OSMnx.
+- Save the plotted figure of the bounding box, representing the buildings, as a dataset image.
+
+This Python script, `generate_dataset.py`, generates square bounding box images from high-resolution satellite imagery using these two techniques: Grid-sampling and Amenity-sampling. The generated images are labeled using `rasterio` package to create label image of building footprints, each pixel of label image represents a class of amenity inside city.
+
+#### Example:
+| Amenity Stratified Sampling| Grid Sampling                           |
+| --------------------------------- | --------------------------------- |
+| ![image908](https://github.com/ducanhho2296/DeepAmenitySegmentation/assets/92146886/d09c9bfc-1d6c-464e-9343-7e0c47d6d835) | ![image52](https://github.com/ducanhho2296/DeepAmenitySegmentation/assets/92146886/1d4cad48-dd3b-48cd-b2ff-0e17f9b62f19) |
+
+
+- Note: The bounding box created by Grid Sampling is smaller than that of Amenity Sampling, resulting in the buildings within the Grid Sampling bounding box also being of smaller size.
+
 
 ## Prerequisites
 
