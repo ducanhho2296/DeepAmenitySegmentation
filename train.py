@@ -77,12 +77,12 @@ def train(model_type, learning_rate, batch_size, num_epochs, gpu, weight):
             print(f"Weight file not found at: {model_path}")
             sys.exit("Please provide a valid weight file or train the model first.")
 
-    train_loss = 0
-    val_loss = 0
+    
 
     # Train the model
     for epoch in range(last_epoch, num_epochs):
         model.train()
+        train_loss = 0
 
         for images, masks in train_loader:
             images = images.to(device).float()
@@ -104,7 +104,7 @@ def train(model_type, learning_rate, batch_size, num_epochs, gpu, weight):
 
         # Validation loop
         model.eval()
-
+        val_loss = 0
         with torch.no_grad():
             for images, masks in val_loader:
                 images = images.to(device).float()
