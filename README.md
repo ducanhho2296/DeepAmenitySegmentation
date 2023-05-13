@@ -7,7 +7,7 @@
 DeepAmenitySegmentation is a deep learning project focused on recognizing amenities in OpenStreetMap data using satellite imagery. The primary objective is to classify buildings in urban environments into different amenity categories, such as retail, food, school, healthcare, entertainment, public, and leisure, using semantic segmentation techniques.
 
 ### Overview
-This project uses a custom semantic segmentation model based on EfficientNet and a dataset of satellite images with corresponding OpenStreetMap (OSM) geo spacial data using Osmnx library. The project focused on detecting and classifying various urban amenities such as retail, food, school, healthcare, entertainment, public, and leisure facilities in satellite images, by utilizing state-of-the-art semantic segmentation techniques to identify building structures and recognize their amenity classes, providing valuable insights for urban planning and development.
+This project uses a custom semantic segmentation model based on EfficientNet and a dataset of satellite images with corresponding OpenStreetMap (OSM) geo spacial data using Osmnx library. The project focused on detecting and classifying various urban amenities by utilizing state-of-the-art semantic segmentation techniques to identify building structures and recognize their amenity classes, providing valuable insights for urban planning and development.
 
 ### Features
 #### Custom Dataset Class for Loading Satellite Images and Label Images
@@ -55,16 +55,16 @@ Note: In case of continue training, `num_epochs` must be greater than the `last 
 - `continue_train`: set True when continue train from the last epoch.
 - `weight`: `<int>` the `weight_num` index to save/load weight after training with n epochs.
 
-3. After the training is completed, the trained model will be saved in the `model` directory with the name `modeltype_"cityname"_amenity_classification.pth`.
+3. After the training is completed, the trained model will be saved in the `model` directory with the name `{model_type}_weight_{weight_num}_segmentation.pth`.
 
 ## Hyperparameter Tuning and Monitoring with MLflow 
 ![mlflow](https://img.shields.io/badge/mlflow-%23d9ead3.svg?style=for-the-badge&logo=numpy&logoColor=blue)
 
 ### Hyperparameter Tuning with MLflow
-the `MLflow_tuning.py` script was created and is located in the mlflow_optimization folder, this script run the `train.py` script with different combinations of hyperparameters, such as learning rates and batch sizes to get the best hyperparameters during training experiment.
+the `mlflow_tuning.py` script was created and is located in the mlflow_optimization folder, this script run the `train.py` script with different combinations of hyperparameters, such as learning rates and batch sizes to get the best hyperparameters during training experiment.
 
 ### Monitor Results in the MLflow UI
-After running the `tune_hyperparameters.py` script, launch the MLflow UI with `mlflow ui` and navigate to `http://localhost:5000`. Click on the experiment name to see the list of runs and their associated metrics and parameters.
+After running the `mlflow_tuning.py` script, launch the MLflow UI with `mlflow ui` and navigate to `http://localhost:5000`. Click on the experiment name to see the list of runs and their associated metrics and parameters.
 
 ### Extract the Best Hyperparameters
-`get_best_hyperparameters.py` was created to use the MLflow Python API to get the best run based on the lowest validation loss and extract the optimized learning rate and batch size. Now we can use these optimized hyperparameters to continue training the model from the best checkpoint.
+In `mlflow_tuning.py`, the MLflow Python API was used to get the best run based on the lowest validation loss and extract the optimized learning rate and batch size and write them in `best_parameters.txt` file. Now we can use these optimized hyperparameters to continue training the model from the best checkpoint.
