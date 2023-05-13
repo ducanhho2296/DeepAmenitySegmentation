@@ -1,0 +1,2 @@
+
+The model:unet has the best learning rate is 0.0001 and The best batch size is 4.
