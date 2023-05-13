@@ -15,7 +15,7 @@ sys.path.append(parent_dir)
 from models.model.get_model import *
 
 
-def train(model_type, learning_rate, batch_size, num_epochs, gpu, weight):
+def train(model_type, learning_rate, batch_size, num_epochs, gpu, continue_training, weight_num=1):
     # Load the configuration file
     config = configparser.ConfigParser()
     config.read('config.ini')
@@ -60,14 +60,14 @@ def train(model_type, learning_rate, batch_size, num_epochs, gpu, weight):
 
     # Load the specified weight file if provided
     last_epoch = 0
-    if weight == None:
-        weight_num = 1
-    else: weight_num = weight
+    # if weight == None:
+    #     weight_num = 1
+    # else: weight_num = weight
 
     model_name = f"{model_type}_weight_{weight_num}_segmentation.pth"
     model_path = os.path.join(root_path, model_weight_path, model_name)
 
-    if weight:
+    if continue_training:
         if os.path.exists(model_path):
             checkpoint = torch.load(model_path)
             model.load_state_dict(checkpoint['model_state_dict'])
@@ -146,9 +146,10 @@ if __name__ == '__main__':
     parser.add_argument('--batch', type=int, default=8, help='Batch size')
     parser.add_argument('--epoch', type=int, default=50, help='Number of epochs')
     parser.add_argument('--gpu', type=int, default=0, help='specific gpu for training')
-    parser.add_argument('--weight', type=int, default=None, help='Continue training from the last checkpoint')
-    
+    parser.add_argument('--continue_training', type=bool, default=False, help='Continue training from the last checkpoint')
+    parser.add_argument('--weight_num', type=int, default=1, help='specific index of weight for continue training')
+
     args = parser.parse_args()
 
     # Call the train function with command-line arguments
-    train(args.model, args.learning_rate, args.batch, args.epoch, args.gpu, args.weight)
+    train(args.model, args.learning_rate, args.batch, args.epoch, args.gpu, args.continue_training, args.weight_num)
