@@ -44,3 +44,36 @@ for lr in learning_rates:
             mlflow.log_metric("val_loss", val_loss)
             mlflow.log_metric("train_loss", train_loss)
 
+##############################################################
+input("Enter to logging the best hyperparameters")
+experiment = mlflow.get_experiment_by_name(experiment_name)
+experiment_id = experiment.experiment_id
+
+# Get all runs in the experiment
+runs = mlflow.search_runs(experiment_ids=[experiment_id])
+
+# Find the best run based on the lowest validation loss
+best_run = runs.loc[runs["metrics.val_loss"].idxmin()]
+
+# Get the optimized learning rate and batch size
+best_learning_rate = best_run["params.learning_rate"]
+best_batch_size = int(best_run["params.batch_size"])
+model_name = best_run["params.model"]
+print("Best learning rate:", best_learning_rate)
+print("Best batch size:", best_batch_size)
+
+#---------------------------------------
+import os, sys
+
+parent_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+sys.path.append(parent_dir)
+
+mlflow_path = "mlflow_optimization"
+file_path = os.path.join(parent_dir, mlflow_path, "best_parameters.txt")
+
+with open(file_path, 'w') as file:
+        file.write(str("\nThe model:{} has the best learning rate is {} and The best batch size is {}.".format(model_name, 
+                                                                                                               best_learning_rate, 
+                                                                                                               best_batch_size)))
+
+print("The information of optimized hyperparameter was saved successfully in best_parameters.txt file")
