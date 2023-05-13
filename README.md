@@ -18,9 +18,9 @@ This project uses a custom semantic segmentation model based on EfficientNet and
 - Pandas is utilized for extracting building footprints within a square region, which are then used for labeling the image.
 - For further details on the main idea, please refer to the description provided in the datasets folder.
 
-![Sample Satellite Image](https://user-images.githubusercontent.com/92146886/219333765-b746ee07-e997-42bd-b49d-64c31464274a.png)
-
+<img src="https://user-images.githubusercontent.com/92146886/219333765-b746ee07-e997-42bd-b49d-64c31464274a.png" alt="download" style="width:512px;">
 Note: The above image showcases a sample satellite image for illustrative purposes.
+
 ## Train Amenity Segmentation Model
 ![PyTorch](https://img.shields.io/badge/PyTorch-%23EE4C2C.svg?style=for-the-badge&logo=PyTorch&logoColor=white)
 
