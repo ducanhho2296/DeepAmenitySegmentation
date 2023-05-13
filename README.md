@@ -43,13 +43,17 @@ pip install -r requirements.txt
 2. Run the following command to train the model:
 
 ```bash
-python train.py --model <model_type> --batch <batch_size> --epoch <num_epochs> --gpu <gpu_index> --weight <weight_num> --continue_train <True/False>
+python train.py --model <model_type> --batch <batch_size> --epoch <num_epochs> --gpu <gpu_index>  --continue_train <True/False> --weight <weight_num>
 ```
 
 - `model_type`: The type of the model architecture to use. The two options are `unet` and `deeplabv3plus`.
 - `batch_size`: The batch size used during training. The default is `8`.
-- `num_epochs`: The number of epochs to train for. The default is `50`.
+- `num_epochs`: The number of epochs to train for. The default is `50`. 
+
+Note: In case of continue training, `num_epochs` must be greater than the `last epoch`, that can be found in `models/best_weights/last_epochs.txt`
 - `gpu_index`: The index of the GPU to use for training. The default is `0`.
+- `continue_train`: set True when continue train from the last epoch.
+- `weight`: `<int>` the `weight_num` index to save/load weight after training with n epochs.
 
 3. After the training is completed, the trained model will be saved in the `model` directory with the name `modeltype_"cityname"_amenity_classification.pth`.
 
