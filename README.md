@@ -62,4 +62,4 @@ Note: In case of continue training, `num_epochs` must be greater than the `last 
 Launch the MLflow UI with `mlflow ui`, navigate to `http://localhost:5000`, and click on the experiment name to see the list of runs and their metrics and parameters.
 
 ### Extract the Best Hyperparameters
-`mlflow_tuning.py` uses the MLflow Python API to find the best run based on the lowest validation loss, extract optimized learning rate and batch size and write them in `mlflow_optimization/best_parameters.txt` file.
+`mlflow_tuning.py` uses the MLflow Python API to find the best run based on the lowest validation loss, extract optimized learning rate and batch size and write them in `mlflow_optimization/best_parameters.txt`.
