@@ -40,6 +40,17 @@ pip install -r requirements.txt
 ```bash
 python train.py --model <model_type> --batch <batch_size> --epoch <num_epochs> --gpu <gpu_index>  --continue_train <True/False> --weight <weight_num>
 ```
+- `model_type`: The type of the model architecture to use. The two options are `unet` and `deeplabv3plus`.
+- `batch_size`: The batch size used during training. The default is `8`.
+- `num_epochs`: The number of epochs to train for. The default is `50`. 
+
+Note: In case of continue training, `num_epochs` must be greater than the `last epoch`, that can be found in `models/best_weights/last_epochs.txt`
+- `gpu_index`: The index of the GPU to use for training. The default is `0`.
+- `continue_train`: set True when continue train from the last epoch.
+- `weight`: `<int>` the `weight_num` index to save/load weight after training with n epochs.
+
+3. After the training is completed, the trained model will be saved in the `model` directory with the name `{model_type}_weight_{weight_num}_segmentation.pth`.
+
 
 ## Hyperparameter Tuning and Monitoring with MLflow 
 ![mlflow](https://img.shields.io/badge/mlflow-%23d9ead3.svg?style=for-the-badge&logo=numpy&logoColor=blue)
@@ -51,4 +62,4 @@ python train.py --model <model_type> --batch <batch_size> --epoch <num_epochs> -
 Launch the MLflow UI with `mlflow ui`, navigate to `http://localhost:5000`, and click on the experiment name to see the list of runs and their metrics and parameters.
 
 ### Extract the Best Hyperparameters
-`mlflow_tuning.py` uses the MLflow Python API to find the best run based on the lowest validation loss, extract optimized learning rate and batch
+`mlflow_tuning.py` uses the MLflow Python API to find the best run based on the lowest validation loss, extract optimized learning rate and batch size and write them in `best_parameters.txt` file.
