@@ -3,6 +3,8 @@ venv/
 cache/
 __pycache__/
 mlruns/
+analyzing/
+.vscode/ 
 
 datasets/images/*
 datasets/labels/*
