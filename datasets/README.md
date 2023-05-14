@@ -4,6 +4,7 @@ In this project, there are two types to sampling dataset:
 1. Grid Sampling
 2. Amenity Stratified Sampling
 
+Colab link for Visualization of sampling methods:  [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1evkK3QimFu-sQqUFDyBWpqWFfUPSmFod?usp=sharing)
 #### Grid Sampling
 The grid sampling method involves dividing the square region into a grid and sampling buildings from specific grid points. The steps involved in grid sampling are as follows:
 
