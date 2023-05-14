@@ -7,7 +7,7 @@
 DeepAmenitySegmentation is a deep learning project for recognizing amenities in OpenStreetMap data using satellite imagery. It classifies urban buildings into amenity categories like retail, food, school, healthcare, entertainment, public, and leisure using semantic segmentation techniques.
 
 ### Overview
-The project employs a custom semantic segmentation model based on EfficientNet with a satellite image dataset and OpenStreetMap (OSM) geospatial data using Osmnx library. It detects and classifies urban amenities with semantic segmentation to provide insights for urban planning and development.
+The project employs a custom semantic segmentation model based on U-net architecture using pre-trained EfficientNet as Backbone model and train model with a satellite image dataset and OpenStreetMap (OSM) geospatial data using Osmnx library. It detects and classifies urban amenities with semantic segmentation to provide insights for urban planning and development.
 
 ### Features
 #### Custom Dataset Class
