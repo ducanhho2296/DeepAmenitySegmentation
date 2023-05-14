@@ -3,7 +3,7 @@ venv/
 cache/
 __pycache__/
 mlruns/
-analyzing/
+osmnx/
 .vscode/ 
 
 datasets/images/*
