@@ -7,12 +7,12 @@ import torch.optim as optim
 from torch.utils.data import DataLoader
 from datasets import create_train_val_datasets, get_transforms
 import configparser
-import mlflow
 
 parent_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 sys.path.append(parent_dir)
 
 from models.model.get_model import *
+from models.model.early_stopping import EarlyStopping
 
 
 def train(model_type, learning_rate, batch_size, num_epochs, gpu, continue_training, weight_num=1):
@@ -80,7 +80,9 @@ def train(model_type, learning_rate, batch_size, num_epochs, gpu, continue_train
     
 
     # Train the model
-    for epoch in range(last_epoch, num_epochs):
+    early_stopping = EarlyStopping(patience=7, verbose=True)
+
+    for epoch in range(last_epoch, last_epoch + num_epochs):
         model.train()
         train_loss = 0
 
@@ -117,24 +119,26 @@ def train(model_type, learning_rate, batch_size, num_epochs, gpu, continue_train
 
         val_loss /= len(val_loader)
 
-        # # Log the metrics to MLflow for monitoring training process
-        # mlflow.log_metric("train_loss", train_loss, step=epoch)
-        # mlflow.log_metric("val_loss", val_loss, step=epoch)
+        early_stopping(val_loss, model, epoch, optimizer, model_name, model_path)
 
-        print(f"Epoch {epoch + 1}/{num_epochs}, Train Loss: {train_loss:.4f}, Val Loss: {val_loss:.4f}")
+        if early_stopping.early_stop:
+            print("Early stopping")
+            break
 
-    # Save the trained model
-    checkpoint = {
-        'epoch': num_epochs,
-        'model_state_dict': model.state_dict(),
-        'optimizer_state_dict': optimizer.state_dict(),
-    }
-    torch.save(checkpoint, model_path)
+        print(f"Epoch {epoch + 1}/{last_epoch + num_epochs}, Train Loss: {train_loss:.4f}, Val Loss: {val_loss:.4f}")
 
-    file_path = os.path.join(root_path, model_weight_path, "last_epochs.txt")
+    # # Save the trained model
+    # checkpoint = {
+    #     'epoch': num_epochs,
+    #     'model_state_dict': model.state_dict(),
+    #     'optimizer_state_dict': optimizer.state_dict(),
+    # }
+    # torch.save(checkpoint, model_path)
 
-    with open(file_path, 'w') as file:
-        file.write(str("weight number:{} has the last epoch is {}".format(weight_num, num_epochs)))
+    # file_path = os.path.join(root_path, model_weight_path, "last_epochs.txt")
+
+    # with open(file_path, 'w') as file:
+    #     file.write(str("weight number:{} has the last epoch is {}".format(weight_num, num_epochs)))
     
     return val_loss, train_loss
 
@@ -144,7 +148,7 @@ if __name__ == '__main__':
     parser.add_argument('--model', type=str, default='unet', help='Model type (unet or deeplabv3plus)')
     parser.add_argument('--learning_rate', type=float, default=1e-4, help='Learning rate')
     parser.add_argument('--batch', type=int, default=8, help='Batch size')
-    parser.add_argument('--epoch', type=int, default=50, help='Number of epochs')
+    parser.add_argument('--epoch', type=int, default=50, help='Number of additional epochs to train for')
     parser.add_argument('--gpu', type=int, default=0, help='specific gpu for training')
     parser.add_argument('--continue_training', type=bool, default=False, help='Continue training from the last checkpoint')
     parser.add_argument('--weight_num', type=int, default=1, help='specific index of weight for continue training')
@@ -152,4 +156,5 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     # Call the train function with command-line arguments
+
     train(args.model, args.learning_rate, args.batch, args.epoch, args.gpu, args.continue_training, args.weight_num)

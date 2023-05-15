@@ -14,10 +14,10 @@ from models.model.get_model import *
 # Parse command-line arguments
 parser = argparse.ArgumentParser()
 parser.add_argument('--model', type=str, default='unet', help='Model type (unet or deeplabv3plus)')
-parser.add_argument('--weight', type=int, default=None, help='Continue training from the last checkpoint')
+parser.add_argument('--weight', type=int, default=None, help='weight number')
 
 parser.add_argument('--batch', type=int, default=8, help='Batch size')
-parser.add_argument('--gpu', type=int, default=0, help='specific gpu for training')
+parser.add_argument('--gpu', type=int, default=0, help='specific gpu for evaluation')
 
 args = parser.parse_args()
 
