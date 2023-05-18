@@ -19,7 +19,7 @@ parser.add_argument('--weight_num', type=int, default=1, help='specific index of
 args = parser.parse_args()
 
 # Set the experiment name
-experiment_name = "ducanh_Unet experiment"
+experiment_name = "{} experiment".format(args.model)
 mlflow.set_experiment(experiment_name)
 
 # Define the search space for hyperparameters
@@ -76,4 +76,4 @@ with open(file_path, 'w') as file:
                                                                                                                best_learning_rate, 
                                                                                                                best_batch_size)))
 
-print("The information of optimized hyperparameter was saved successfully in best_parameters.txt file")
+print("The information of optimized hyperparameter was saved successfully in best_parameters.txt")

@@ -150,11 +150,11 @@ if __name__ == '__main__':
     parser.add_argument('--batch', type=int, default=8, help='Batch size')
     parser.add_argument('--epoch', type=int, default=50, help='Number of additional epochs to train for')
     parser.add_argument('--gpu', type=int, default=0, help='specific gpu for training')
-    parser.add_argument('--continue_training', type=bool, default=False, help='Continue training from the last checkpoint')
+    parser.add_argument('--continue_train', type=bool, default=False, help='Continue training from the last checkpoint')
     parser.add_argument('--weight_num', type=int, default=1, help='specific index of weight for continue training')
 
     args = parser.parse_args()
 
     # Call the train function with command-line arguments
 
-    train(args.model, args.learning_rate, args.batch, args.epoch, args.gpu, args.continue_training, args.weight_num)
+    train(args.model, args.learning_rate, args.batch, args.epoch, args.gpu, args.continue_train, args.weight_num)
