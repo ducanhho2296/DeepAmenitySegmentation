@@ -126,19 +126,6 @@ def train(model_type, learning_rate, batch_size, num_epochs, gpu, continue_train
             break
 
         print(f"Epoch {epoch + 1}/{last_epoch + num_epochs}, Train Loss: {train_loss:.4f}, Val Loss: {val_loss:.4f}")
-
-    # # Save the trained model
-    # checkpoint = {
-    #     'epoch': num_epochs,
-    #     'model_state_dict': model.state_dict(),
-    #     'optimizer_state_dict': optimizer.state_dict(),
-    # }
-    # torch.save(checkpoint, model_path)
-
-    # file_path = os.path.join(root_path, model_weight_path, "last_epochs.txt")
-
-    # with open(file_path, 'w') as file:
-    #     file.write(str("weight number:{} has the last epoch is {}".format(weight_num, num_epochs)))
     
     return val_loss, train_loss
 
