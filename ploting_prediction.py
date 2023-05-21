@@ -2,8 +2,6 @@ import os
 import sys
 import argparse
 import torch
-import torch.nn as nn
-import torch.optim as optim
 from torch.utils.data import DataLoader
 from datasets import get_transforms, SatelliteDataset
 
@@ -15,7 +13,6 @@ from models.model.get_model import *
 parser = argparse.ArgumentParser()
 parser.add_argument('--model', type=str, default='unet', help='Model type (unet or deeplabv3plus)')
 parser.add_argument('--weight', type=int, default=1, help='weight number')
-
 parser.add_argument('--batch', type=int, default=8, help='Batch size')
 parser.add_argument('--gpu', type=int, default=0, help='specific gpu for evaluation')
 
@@ -74,7 +71,6 @@ test_loader = DataLoader(test_dataset, batch_size=batch_size, shuffle=False, num
 import matplotlib.pyplot as plt
 import torch
 import torchvision.transforms as transforms
-from PIL import Image
 import numpy as np
 from matplotlib.colors import ListedColormap, BoundaryNorm
 
