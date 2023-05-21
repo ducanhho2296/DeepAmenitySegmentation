@@ -30,7 +30,6 @@ model_weight_path = config['paths']['model_path']
 test_image_dir = config['paths']['image_test']
 test_label_dir = config['paths']['label_test']
 
-city_name = config['city']['name']
 num_classes = int(config['training_params']['num_classes'])
 
 # Construct the full paths to the image and label directories
@@ -41,8 +40,6 @@ label_dir = os.path.join(root_path, test_label_dir)
 gpu = args.gpu
 device = torch.device('cuda:{}'.format(gpu) if torch.cuda.is_available() else 'cpu')
 
-
-# Load the specified weight file if provided
 if args.weight == None:
     weight_num = 1
 else: weight_num = args.weight
