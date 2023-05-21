@@ -4,11 +4,18 @@ import argparse
 import torch
 from torch.utils.data import DataLoader
 from datasets import get_transforms, SatelliteDataset
+import matplotlib.pyplot as plt
+import torch
+import torchvision.transforms as transforms
+import numpy as np
+from matplotlib.colors import ListedColormap, BoundaryNorm
 
 parent_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 sys.path.append(parent_dir)
 
 from models.model.get_model import *
+
+
 # Parse command-line arguments
 parser = argparse.ArgumentParser()
 parser.add_argument('--model', type=str, default='unet', help='Model type (unet or deeplabv3plus)')
@@ -63,13 +70,6 @@ model.eval()
 batch_size = args.batch
 test_dataset = SatelliteDataset(image_dir, label_dir, get_transforms())
 test_loader = DataLoader(test_dataset, batch_size=batch_size, shuffle=False, num_workers=4)
-
-
-import matplotlib.pyplot as plt
-import torch
-import torchvision.transforms as transforms
-import numpy as np
-from matplotlib.colors import ListedColormap, BoundaryNorm
 
 # Create a colormap
 cmap = ListedColormap([
