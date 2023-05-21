@@ -61,7 +61,17 @@ Launch the MLflow UI with `mlflow ui`, navigate to `http://localhost:5000`, and 
 ### Extract the Best Hyperparameters
 `mlflow_tuning.py` uses the MLflow Python API to find the best run based on the lowest validation loss, extract optimized learning rate and batch size and write them in `mlflow_optimization/best_parameters.txt`.
 
-# Result
+## Model Evaluation Results
+
+There are two models were trained and evaluated: U-Net and DeepLabV3+. Their performance on the test set is summarized in the table below:
+
+| Model        | Accuracy | Precision | Recall | F1 Score |
+|--------------|----------|-----------|--------|----------|
+| U-Net        | 0.9220   | 0.9166    | 0.9220 | 0.9181   |
+| DeepLabV3+   | 0.9489      | 0.9448       | 0.9489    | 0.9461      |
+
+### Visualizing results
+
     "#000000",  # NaN, no amenity, color: black
     "#FF0000",  # retail, color: red
     "#00FF00",  # food, color: green
@@ -73,4 +83,6 @@ Launch the MLflow UI with `mlflow ui`, navigate to `http://localhost:5000`, and 
     "#800000",  # sport, color: maroon
     "#808000",  # highway, color: olive
 <img src="https://github.com/ducanhho2296/DeepAmenitySegmentation/assets/92146886/ae042b66-d89c-4087-9ec1-8117302ba5a6" alt="download" style="width:1080px;">
+
+
 
