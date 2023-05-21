@@ -60,3 +60,17 @@ Launch the MLflow UI with `mlflow ui`, navigate to `http://localhost:5000`, and 
 
 ### Extract the Best Hyperparameters
 `mlflow_tuning.py` uses the MLflow Python API to find the best run based on the lowest validation loss, extract optimized learning rate and batch size and write them in `mlflow_optimization/best_parameters.txt`.
+
+# Result
+    "#000000",  # NaN, no amenity, color: black
+    "#FF0000",  # retail, color: red
+    "#00FF00",  # food, color: green
+    "#0000FF",  # school, color: blue
+    "#FFFF00",  # healthcare, color: yellow
+    "#00FFFF",  # entertainment, color: cyan
+    "#FF00FF",  # public, color: magenta
+    "#C0C0C0",  # leisure, color: silver
+    "#800000",  # sport, color: maroon
+    "#808000",  # highway, color: olive
+<img src="https://github.com/ducanhho2296/DeepAmenitySegmentation/assets/92146886/ae042b66-d89c-4087-9ec1-8117302ba5a6" alt="download" style="width:1080px;">
+
