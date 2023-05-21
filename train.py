@@ -15,7 +15,7 @@ from models.model.get_model import *
 from models.model.early_stopping import EarlyStopping
 
 
-def train(model_type, learning_rate, batch_size, num_epochs, gpu, continue_training, weight_num=1):
+def train(model_type, learning_rate, batch_size, num_epochs, gpu, continue_training, weight_num):
     # Load the configuration file
     config = configparser.ConfigParser()
     config.read('config.ini')
@@ -58,11 +58,7 @@ def train(model_type, learning_rate, batch_size, num_epochs, gpu, continue_train
     criterion = nn.CrossEntropyLoss()
     optimizer = optim.Adam(model.parameters(), lr=learning_rate)
 
-    # Load the specified weight file if provided
     last_epoch = 0
-    # if weight == None:
-    #     weight_num = 1
-    # else: weight_num = weight
 
     model_name = f"{model_type}_weight_{weight_num}_segmentation.pth"
     model_path = os.path.join(root_path, model_weight_path, model_name)
