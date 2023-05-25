@@ -8,6 +8,7 @@ from io import BytesIO
 from PIL import Image
 import osmnx as ox
 import rasterio
+import random
 
 # Read the configuration file
 config = configparser.ConfigParser()
@@ -22,7 +23,7 @@ from utils.buildings_osmnx import CityData
 from utils.label_image import label_image
 from utils.image_processing import pad_image_to_square, pad_tif_to_square
 from shapely.geometry import Polygon
-from generate_dataset import extract_point
+# from generate_dataset import extract_point
 
 
 # Set paths from configuration file
@@ -43,17 +44,26 @@ dist = int(config['city']['test_dist'])
 
 city_data = CityData(city_name)
 buildings, city_bbox = city_data.get_data()
-amenity_points = []
 exploded = buildings.explode(index_parts=True)
 count = 0
-random_points = buildings.sample(n=1000, random_state=1)
 
-list_points = []
-for geometry in random_points['geometry']:
-    list_points.append(extract_point(geometry))
+# random_points = buildings.sample(n=1000, random_state=1)
+# list_points = []
+# for geometry in random_points['geometry']:
+#     list_points.append(extract_point(geometry))
 
+#create random points
+def generate_random_floats(n, a, b): #n: number of random points
+    random_floats = [random.uniform(a, b) for i in range(n)]
+    return random_floats
 
-for j in list_points:
+min_long, min_lat, max_long, max_lat = city_bbox
+random_lat = generate_random_floats(1000, min_lat, max_lat)
+random_long = generate_random_floats(1000, min_long, max_long)
+
+random_coords = combined_list = [(x, y) for x, y in zip(random_long, random_lat)]
+
+for j in random_coords:
     # raster = np.zeros(shape=(size,size))  # A[i][j] = "(long, latt)"
     center_point = (j[1], j[0]) #center_point = (latitude, longtitude)
     bbox = ox.utils_geo.bbox_from_point(center_point, dist=dist)
