@@ -5,7 +5,7 @@ import torch
 import torch.nn as nn
 import torch.optim as optim
 from torch.utils.data import DataLoader
-from datasets import create_train_val_datasets, get_transforms
+from load_datasets import create_train_val_datasets, get_transforms
 import configparser
 
 parent_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))

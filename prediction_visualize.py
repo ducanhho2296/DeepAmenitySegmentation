@@ -3,7 +3,7 @@ import sys
 import argparse
 import torch
 from torch.utils.data import DataLoader
-from datasets import get_transforms, SatelliteDataset
+from load_datasets import get_transforms, SatelliteDataset
 import matplotlib.pyplot as plt
 import torch
 import torchvision.transforms as transforms
