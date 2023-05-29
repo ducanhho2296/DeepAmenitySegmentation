@@ -66,15 +66,16 @@ The script reads the configuration information from the `config.ini` file locate
 
 - `img_size`: The size of the generated square bounding box images in pixels.
 
-## Running the script
+## Trainingset generation
 
-To run the script, simply execute the following command:
+To generate dataset for training and cross evaluation process, simply execute the following command:
 
 ```
 python generate_dataset.py
 ```
 
 The script will generate square bounding box images using two techniques: Grid-sampling and Amenity-stratified-sampling. The generated images and labels will be saved in the directories specified in the configuration file.
+
 
 ## Note
 
