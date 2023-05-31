@@ -1,6 +1,6 @@
 # Generating square bbox images 
 
-In this project, there are two types to sampling dataset:
+In this project, there are two types of dataset sampling:
 1. Grid Sampling
 2. Amenity Stratified Sampling
 
