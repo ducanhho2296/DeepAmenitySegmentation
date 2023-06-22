@@ -77,7 +77,11 @@ python generate_dataset.py
 The script will generate square bounding box images using two techniques: Grid-sampling and Amenity-stratified-sampling. The generated images and labels will be saved in the directories specified in the configuration file.
 
 ## Testset generation
+<<<<<<< HEAD
 The samples in testset is collected by randomly sampling a list of random points inside city bounding box, and using function ```osmnx.bbox_from_point``` for generating square image of a region, with center point is the corresponding random point.
+=======
+The samples in testset is collected by randomly sampling a list of random points inside city bounding box, and using function ```osmnx.bbox_from_point``` for generating square image of a region, with center point is the corresponding random point. This method ensures that the location, shape, and size of buildings in the test set were not present in the training set, thereby avoiding overfitting and preventing artificially inflated precision scores.
+>>>>>>> bcacf7ec01c417f1d6e00ee6a84243cd448f20b8
 
 the following command:
 ```
