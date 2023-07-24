@@ -130,7 +130,6 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--model', type=str, default='unet', help='Model type (unet or deeplabv3plus)')
     parser.add_argument('--learning_rate', type=float, default=1e-4, help='Learning rate')
-    parser.add_argument('--batch', type=int, default=8, help='Batch size')
     parser.add_argument('--epoch', type=int, default=50, help='Number of additional epochs to train for')
     parser.add_argument('--gpu', type=int, default=0, help='specific gpu for training')
     parser.add_argument('--continue_train', type=bool, default=False, help='Continue training from the last checkpoint')
