@@ -21,7 +21,6 @@ class Gridgenerating():
                 self.grid_points.append(Point(x, y))
                 
         return self.grid_points
-    # def dropping_points(self): #drop grid_points which not inside building
     #     grid_points_gdf = gpd.GeoDataFrame(geometry=self.grid_points,  #creat geodataframe of grid points
     #                                        crs=self.city_df.crs)  
         
