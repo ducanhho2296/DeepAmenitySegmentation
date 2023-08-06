@@ -22,7 +22,6 @@ class Gridgenerating():
                 
         return self.grid_points
     #                                        crs=self.city_df.crs)  
-        
     #     joined_gdf = gpd.sjoin(grid_points_gdf, self.city_df, how="left", op="intersects")
     #     # Keep only grid points that intersect with a building
     #     points_with_buildings = joined_gdf.dropna(subset=["index_right"])
