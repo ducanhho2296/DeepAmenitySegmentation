@@ -21,7 +21,6 @@ class Gridgenerating():
                 self.grid_points.append(Point(x, y))
                 
         return self.grid_points
-    #     grid_points_gdf = gpd.GeoDataFrame(geometry=self.grid_points,  #creat geodataframe of grid points
     #                                        crs=self.city_df.crs)  
         
     #     joined_gdf = gpd.sjoin(grid_points_gdf, self.city_df, how="left", op="intersects")
