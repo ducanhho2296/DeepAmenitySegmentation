@@ -21,7 +21,6 @@ class Gridgenerating():
                 self.grid_points.append(Point(x, y))
                 
         return self.grid_points
-    #     points_with_buildings = joined_gdf.dropna(subset=["index_right"])
 
     #     # Reset the index
     #     points_with_buildings.reset_index(drop=True, inplace=True)
