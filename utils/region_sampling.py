@@ -21,7 +21,6 @@ class Gridgenerating():
                 self.grid_points.append(Point(x, y))
                 
         return self.grid_points
-    #     # Reset the index
     #     points_with_buildings.reset_index(drop=True, inplace=True)
 
     #     # Remove the 'index_right' column
