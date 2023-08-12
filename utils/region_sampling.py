@@ -21,7 +21,6 @@ class Gridgenerating():
                 self.grid_points.append(Point(x, y))
                 
         return self.grid_points
-    #     # Remove the 'index_right' column
     #     points_with_buildings.drop(columns=["index_right"], inplace=True)
     #     points_list = [(point.x, point.y) for point in points_with_buildings.geometry]
     #     #longitudes, latitudes = zip(*points_list) #just for ploting
