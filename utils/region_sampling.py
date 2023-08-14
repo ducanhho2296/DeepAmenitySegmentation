@@ -21,7 +21,6 @@ class Gridgenerating():
                 self.grid_points.append(Point(x, y))
                 
         return self.grid_points
-    #     return points_list
     
     def create_bbox_poly(self,square_bbox):
         min_x, min_y, max_x, max_y = square_bbox
