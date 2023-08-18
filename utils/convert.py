@@ -6,3 +6,4 @@ def convert_label_to_coordinates_with_class_names(predicted_label_image, label_p
     with rasterio.open(predicted_label_image, 'r') as src:
         # Get the transform from the label profile
         transform = src.transform
+        
