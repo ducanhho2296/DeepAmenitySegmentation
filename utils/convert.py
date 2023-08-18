@@ -7,3 +7,4 @@ def convert_label_to_coordinates_with_class_names(predicted_label_image, label_p
         # Get the transform from the label profile
         transform = src.transform
         
+        # Read the label values from the image
