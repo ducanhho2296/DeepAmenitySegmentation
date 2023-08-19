@@ -9,3 +9,4 @@ def convert_label_to_coordinates_with_class_names(predicted_label_image, label_p
         
         # Read the label values from the image
         predicted_label_array = src.read(1)
+        
