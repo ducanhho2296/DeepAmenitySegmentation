@@ -11,3 +11,4 @@ def convert_label_to_coordinates_with_class_names(predicted_label_image, label_p
         predicted_label_array = src.read(1)
         
         # Convert pixel coordinates to geographical coordinates
+        row_indices, col_indices = np.where(predicted_label_array != 0)
