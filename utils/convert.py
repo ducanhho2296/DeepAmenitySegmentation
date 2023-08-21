@@ -14,3 +14,4 @@ def convert_label_to_coordinates_with_class_names(predicted_label_image, label_p
         row_indices, col_indices = np.where(predicted_label_array != 0)
         lon_values, lat_values = rasterio.transform.xy(transform, row_indices, col_indices)
         
+        # Map numeric labels to class names
