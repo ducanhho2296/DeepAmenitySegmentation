@@ -16,3 +16,4 @@ def convert_label_to_coordinates_with_class_names(predicted_label_image, label_p
         
         # Map numeric labels to class names
         predicted_class_names = np.vectorize(lambda label: class_mapping[label])(predicted_label_array[row_indices, col_indices])
+    
