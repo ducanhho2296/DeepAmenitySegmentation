@@ -21,3 +21,4 @@ def convert_label_to_coordinates_with_class_names(predicted_label_image, label_p
 
 # Call the function to convert the predicted label image to coordinates with class names
 predicted_label_image = 'path_to_predicted_label_image.tif'
+lon_values, lat_values, predicted_class_names = convert_label_to_coordinates_with_class_names(predicted_label_image, label_profile, class_mapping)
