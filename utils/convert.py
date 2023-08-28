@@ -1,6 +1,7 @@
 import rasterio
 import numpy as np
 
+def convert_label(predicted_label_image, label_profile, class_mapping):
     # Open the label image using rasterio
     with rasterio.open(predicted_label_image, 'r') as src:
         # Get the transform from the label profile
