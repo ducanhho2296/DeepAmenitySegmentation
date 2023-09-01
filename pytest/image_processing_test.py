@@ -14,3 +14,4 @@ import configparser
 
 config = configparser.ConfigParser()
 config.read('config.ini')
+# Get the paths and other parameters from the configuration file
