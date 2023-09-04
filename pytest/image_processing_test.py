@@ -17,3 +17,4 @@ config.read('config.ini')
 # Get the paths and other parameters from the configuration file
 root_path = os.path.abspath(os.path.join(parent_dir, config.get('paths', 'root_path')))
 model_weight_path = config['paths']['model_path']
+test_image_path = config['paths']['image_test']
