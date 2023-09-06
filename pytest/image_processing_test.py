@@ -20,3 +20,4 @@ model_weight_path = config['paths']['model_path']
 test_image_path = config['paths']['image_test']
 test_padded_image_path = config['paths']['label_test']
 
+
