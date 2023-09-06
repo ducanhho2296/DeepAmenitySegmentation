@@ -24,3 +24,4 @@ test_padded_image_path = config['paths']['label_test']
 def test_pad_image_to_square():
     test_image = cv2.imread(test_image_path)
     padded_image = pad_image_to_square(test_image)
+    assert padded_image.shape[0] == padded_image.shape[1]
