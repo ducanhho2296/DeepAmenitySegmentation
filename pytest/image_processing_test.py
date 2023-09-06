@@ -27,3 +27,4 @@ def test_pad_image_to_square():
     assert padded_image.shape[0] == padded_image.shape[1]
 
 def test_pad_tif_to_square():
+    pad_tif_to_square(test_image_path, test_padded_image_path, size=512)
