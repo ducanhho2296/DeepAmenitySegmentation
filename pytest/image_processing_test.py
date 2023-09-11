@@ -31,3 +31,4 @@ def test_pad_tif_to_square():
     with rasterio.open(test_image_path) as src_original:
         original_shape = src_original.shape
     
+    with rasterio.open(test_padded_image_path) as src_padded:
