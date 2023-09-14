@@ -35,3 +35,4 @@ def test_pad_tif_to_square():
         padded_shape = src_padded.shape
         
     assert padded_shape[1] == padded_shape[2]
+
