@@ -36,3 +36,4 @@ def test_pad_tif_to_square():
         
     assert padded_shape[1] == padded_shape[2]
 
+if __name__ == '__main__':
