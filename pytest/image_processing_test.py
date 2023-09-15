@@ -20,6 +20,7 @@ model_weight_path = config['paths']['model_path']
 test_image_path = config['paths']['image_test']
 test_padded_image_path = config['paths']['label_test']
 
+def test_load_image():
 
 def test_pad_image_to_square():
     test_image = cv2.imread(test_image_path)
