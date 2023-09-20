@@ -23,6 +23,7 @@ test_padded_image_path = config['paths']['label_test']
 def test_load_image():
     # Attempt to load the test image
     try:
+        test_image = cv2.imread(test_image_path)
 
 def test_pad_image_to_square():
     test_image = cv2.imread(test_image_path)
