@@ -24,6 +24,7 @@ def test_load_image():
     # Attempt to load the test image
     try:
         test_image = cv2.imread(test_image_path)
+    except Exception as e:
         pytest.fail(f"Failed to load the image: {str(e)}")
 
 def test_pad_image_to_square():
