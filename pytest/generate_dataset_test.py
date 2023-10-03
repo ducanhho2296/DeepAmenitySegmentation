@@ -9,3 +9,4 @@ sys.path.append(parent_dir)
 from datasets.generate_dataset import grid_sampling, stratified_sampling
 
 
+config_path = 'test_config.ini'
