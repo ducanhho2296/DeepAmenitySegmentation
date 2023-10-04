@@ -16,3 +16,4 @@ def test_grid_sampling():
     os.makedirs(test_output_dir, exist_ok=True)
     
     config = configparser.ConfigParser()
+    config.read(config_path)
