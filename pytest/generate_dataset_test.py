@@ -12,3 +12,4 @@ from datasets.generate_dataset import grid_sampling, stratified_sampling
 config_path = 'test_config.ini'
 
 def test_grid_sampling():
+    test_output_dir = 'test_grid_sampling_output'
