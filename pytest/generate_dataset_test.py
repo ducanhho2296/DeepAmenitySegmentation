@@ -13,3 +13,4 @@ config_path = 'test_config.ini'
 
 def test_grid_sampling():
     test_output_dir = 'test_grid_sampling_output'
+    os.makedirs(test_output_dir, exist_ok=True)
