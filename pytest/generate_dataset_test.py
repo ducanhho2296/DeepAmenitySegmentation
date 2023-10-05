@@ -17,3 +17,4 @@ def test_grid_sampling():
     
     config = configparser.ConfigParser()
     config.read(config_path)
+    config['paths']['root_path'] = 'DeepAmenitySegmentation'
