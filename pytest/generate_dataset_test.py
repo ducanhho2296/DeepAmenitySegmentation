@@ -24,3 +24,4 @@ def test_grid_sampling():
     config['paths']['label_test'] = 'datasets/tests/labels'
     config['city']['name'] = 'Hannover Mitte'
     config['city']['dist'] = '250'
+    config['grid']['spacing_x'] = '0.0015'
