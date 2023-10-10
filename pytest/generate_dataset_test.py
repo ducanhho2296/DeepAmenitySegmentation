@@ -26,3 +26,4 @@ def test_grid_sampling():
     config['city']['dist'] = '250'
     config['grid']['spacing_x'] = '0.0015'
     config['grid']['spacing_y'] = '0.0015'
+    config['processing']['img_size'] = '512'
