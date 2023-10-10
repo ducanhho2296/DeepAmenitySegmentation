@@ -28,3 +28,4 @@ def test_grid_sampling():
     config['grid']['spacing_y'] = '0.0015'
     config['processing']['img_size'] = '512'
 
+    with open(config_path, 'w') as configfile:
