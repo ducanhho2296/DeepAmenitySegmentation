@@ -36,3 +36,4 @@ def test_grid_sampling():
     grid_sampling()
     
     os.rmdir(test_output_dir)
+
