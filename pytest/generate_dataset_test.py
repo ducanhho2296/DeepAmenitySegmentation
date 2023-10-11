@@ -30,3 +30,4 @@ def test_grid_sampling():
 
     with open(config_path, 'w') as configfile:
         config.write(configfile)
+    
