@@ -32,3 +32,4 @@ def test_grid_sampling():
         config.write(configfile)
     
     os.environ['CONFIG_PATH'] = config_path
+    
