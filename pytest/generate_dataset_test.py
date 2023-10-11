@@ -34,3 +34,4 @@ def test_grid_sampling():
     os.environ['CONFIG_PATH'] = config_path
     
     grid_sampling()
+    
