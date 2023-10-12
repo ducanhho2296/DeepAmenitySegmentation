@@ -37,3 +37,4 @@ def test_grid_sampling():
     
     os.rmdir(test_output_dir)
 
+def test_stratified_sampling():
