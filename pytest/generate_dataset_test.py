@@ -39,3 +39,4 @@ def test_grid_sampling():
 
 def test_stratified_sampling():
     test_output_dir = 'test_stratified_sampling_output'
+    os.makedirs(test_output_dir, exist_ok=True)
