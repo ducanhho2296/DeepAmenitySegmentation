@@ -43,3 +43,4 @@ def test_stratified_sampling():
     
     config = configparser.ConfigParser()
     config.read(config_path)
+    config['paths']['root_path'] = 'DeepAmenitySegmentation'
