@@ -45,3 +45,4 @@ def test_stratified_sampling():
     config.read(config_path)
     config['paths']['root_path'] = 'DeepAmenitySegmentation'
     config['paths']['padded_img_dir'] = 'datasets/images'
+    config['paths']['padded_label_dir'] = 'datasets/labels'
