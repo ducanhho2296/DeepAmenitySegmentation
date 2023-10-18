@@ -48,3 +48,4 @@ def test_stratified_sampling():
     config['paths']['padded_label_dir'] = 'datasets/labels'
     config['paths']['image_test'] = 'datasets/tests/images'
     config['paths']['label_test'] = 'datasets/tests/labels'
+    config['city']['name'] = 'Hannover Mitte'
