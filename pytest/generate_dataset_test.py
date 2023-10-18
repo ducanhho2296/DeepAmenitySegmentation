@@ -49,3 +49,4 @@ def test_stratified_sampling():
     config['paths']['image_test'] = 'datasets/tests/images'
     config['paths']['label_test'] = 'datasets/tests/labels'
     config['city']['name'] = 'Hannover Mitte'
+    config['city']['dist'] = '250'
