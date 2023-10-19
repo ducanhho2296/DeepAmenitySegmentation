@@ -51,3 +51,4 @@ def test_stratified_sampling():
     config['city']['name'] = 'Hannover Mitte'
     config['city']['dist'] = '250'
     config['grid']['spacing_x'] = '0.0015'
+    config['grid']['spacing_y'] = '0.0015'
