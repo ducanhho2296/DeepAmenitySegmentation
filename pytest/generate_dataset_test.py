@@ -55,3 +55,5 @@ def test_stratified_sampling():
     config['processing']['img_size'] = '512'
 
     with open(config_path, 'w') as configfile:
+        config.write(configfile)
+    
