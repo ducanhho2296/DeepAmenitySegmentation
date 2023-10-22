@@ -58,3 +58,4 @@ def test_stratified_sampling():
         config.write(configfile)
     
     os.environ['CONFIG_PATH'] = config_path
+    
