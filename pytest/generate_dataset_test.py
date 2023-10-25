@@ -60,3 +60,4 @@ def test_stratified_sampling():
     os.environ['CONFIG_PATH'] = config_path
     
     stratified_sampling()
+    
