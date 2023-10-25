@@ -61,3 +61,4 @@ def test_stratified_sampling():
     
     stratified_sampling()
     
+    os.rmdir(test_output_dir)
