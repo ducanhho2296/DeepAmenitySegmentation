@@ -12,6 +12,7 @@ class Gridgenerating():
 
     def grid_points_in_bbox(self, bbox):
         """
+        Get all points which creates raster for the entire city (place)
         """
         min_x, min_y, max_x, max_y = bbox
         x_coords = np.arange(min_x, max_x + self.spacing_x, self.spacing_x)
