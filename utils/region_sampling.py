@@ -11,6 +11,7 @@ class Gridgenerating():
         self.spacing_y = spacing_y
 
     def grid_points_in_bbox(self, bbox):
+        """
         min_x, min_y, max_x, max_y = bbox
         x_coords = np.arange(min_x, max_x + self.spacing_x, self.spacing_x)
         y_coords = np.arange(min_y, max_y + self.spacing_y, self.spacing_y)
