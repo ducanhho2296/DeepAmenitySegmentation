@@ -62,5 +62,6 @@ def test_stratified_sampling():
     stratified_sampling()
     
     os.rmdir(test_output_dir)
+
 if __name__ == '__main__':
     pytest.main()
