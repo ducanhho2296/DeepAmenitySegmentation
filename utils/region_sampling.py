@@ -37,6 +37,7 @@ class Gridgenerating():
         return bbox_poly
     
     def capture_square_bbox(self, point_position, grid_points=None):
+        """
         if grid_points is None:
             grid_points = self.grid_points
 
