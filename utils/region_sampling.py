@@ -39,6 +39,7 @@ class Gridgenerating():
     def capture_square_bbox(self, point_position, grid_points=None):
         """
         draw out the bbox in map
+        """ 
         if grid_points is None:
             grid_points = self.grid_points
 
