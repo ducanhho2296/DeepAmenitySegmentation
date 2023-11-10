@@ -27,6 +27,7 @@ def pad_image_to_square(img, size=448):
 #     with rasterio.open(input_file) as src:
 #         img = src.read()
 #         img = np.moveaxis(img, 0, -1)
+#         padded_img = pad_image_to_square(img)
 # def pad_tif_to_square(input_file, output_file):
 #     with rasterio.open(input_file) as src:
 #         img = src.read()
