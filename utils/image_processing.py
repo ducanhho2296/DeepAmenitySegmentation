@@ -35,7 +35,6 @@ def pad_image_to_square(img, size=448):
 #         padded_img = np.moveaxis(padded_img, -1, 0)
 #         dst.write(padded_img)
 
-#         img = src.read()
 #         img = np.moveaxis(img, 0, -1)
 #         padded_img = pad_image_to_square(img)
 #         transform = src.transform
