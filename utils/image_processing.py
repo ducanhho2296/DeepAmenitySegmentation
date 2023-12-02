@@ -35,7 +35,6 @@ def pad_image_to_square(img, size=448):
 #         padded_img = np.moveaxis(padded_img, -1, 0)
 #         dst.write(padded_img)
 
-#         padded_img = np.moveaxis(padded_img, -1, 0)
 #         dst.write(padded_img)
 
 from scipy.ndimage import binary_dilation
