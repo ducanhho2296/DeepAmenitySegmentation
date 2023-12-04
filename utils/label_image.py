@@ -44,3 +44,4 @@ def label_image(building_df, image, i=1):
     
     return label_data, label_profile, num_classes
 
+# def pad_tif_to_square(input_file, output_file):
