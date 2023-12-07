@@ -50,3 +50,4 @@ def label_image(building_df, image, i=1):
 #         img = np.moveaxis(img, 0, -1)
 #         padded_img = pad_image_to_square(img)
 #         transform = src.transform
+#         profile = src.profile
