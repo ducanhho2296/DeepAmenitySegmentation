@@ -51,3 +51,4 @@ def label_image(building_df, image, i=1):
 #         padded_img = pad_image_to_square(img)
 #         transform = src.transform
 #         profile = src.profile
+#         profile.update(width=padded_img.shape[1], height=padded_img.shape[0], transform=transform)
