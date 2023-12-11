@@ -53,3 +53,4 @@ def label_image(building_df, image, i=1):
 #         profile = src.profile
 #         profile.update(width=padded_img.shape[1], height=padded_img.shape[0], transform=transform)
 #     with rasterio.open(output_file, 'w', **profile) as dst:
+#         padded_img = np.moveaxis(padded_img, -1, 0)
