@@ -55,3 +55,4 @@ def label_image(building_df, image, i=1):
 #     with rasterio.open(output_file, 'w', **profile) as dst:
 #         padded_img = np.moveaxis(padded_img, -1, 0)
 #         dst.write(padded_img)
+# def pad_tif_to_square(input_file, output_file):
