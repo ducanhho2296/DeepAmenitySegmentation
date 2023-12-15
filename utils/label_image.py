@@ -58,3 +58,4 @@ def label_image(building_df, image, i=1):
 # def pad_tif_to_square(input_file, output_file):
 #     with rasterio.open(input_file) as src:
 #         img = src.read()
+#         img = np.moveaxis(img, 0, -1)
